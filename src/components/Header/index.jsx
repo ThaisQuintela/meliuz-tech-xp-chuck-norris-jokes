@@ -5,16 +5,20 @@ import ChuckNorrisContext from '../../context/ChuckNorrisContext';
 import './style.css';
 
 const Header = () => {
-  const { categories } = useContext(ChuckNorrisContext);
+  const { categories, setChoosenCategory } = useContext(ChuckNorrisContext);
+  const navigate = useNavigate();
 
-  const handleCategory = (e) => {
+  const handleCategory = async (e) => {
+    setChoosenCategory(e.target.value);
     navigate(`/categories/${e.target.value}`);
   };
 
   return (
     <header>
       <nav className="navbar">
-        <img src={ logo } className="logo img-fluid" alt="Chuck Norris Approves" />
+        <Link to="/">
+          <img src={ logo } className="logo img-fluid" alt="Chuck Norris Approves" />
+        </Link>
         <label htmlFor="category-list">
           Select the joke&apos;s category
           <select

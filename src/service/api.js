@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: 'https://api.chucknorris.io/jokes/',
 });
 
@@ -11,5 +11,5 @@ export const getCategories = async () => {
 
 export const getJoke = async () => {
   const joke = await api.get('random');
-  return joke.data;
+  return joke.data.value;
 };
